@@ -4,7 +4,7 @@ from pico2d import *
 FIRST_SHEET = 'Energy_Wave.png'
 FIRST_FRAME_WIDTH = 128
 FIRST_FRAME_HEIGHT = 128
-FIRST_NUM_FRAMES = 7
+FIRST_NUM_FRAMES = 7 # 이미지 기준 프레임 수
 FIRST_FRAME_INFO = [
     {'x': i * FIRST_FRAME_WIDTH, 'y': 0, 'w': FIRST_FRAME_WIDTH, 'h': FIRST_FRAME_HEIGHT} for i in range(FIRST_NUM_FRAMES)
 ]
@@ -14,18 +14,18 @@ FIRST_SCALE_LIST = [0.5, 0.7, 1.0, 1.2, 1.5, 1.8, 2.0]  # 프레임별 커지는
 SECOND_SHEET = 'Light_Emission.png'
 SECOND_FRAME_WIDTH = 128
 SECOND_FRAME_HEIGHT = 128
-SECOND_NUM_FRAMES = 5
+SECOND_NUM_FRAMES = 5 # 이미지 기준 프레임 수
 
 # Teleport 애니메이션: Teleport_Character_1.png, Teleport_Character_2.png, Teleport.png
 TELEPORT_IN_SHEET = 'Teleport_Character_1.png'
 TELEPORT_OUT_SHEET = 'Teleport_Character_2.png'
 TELEPORT_FRAME_WIDTH = 128
 TELEPORT_FRAME_HEIGHT = 128
-TELEPORT_NUM_FRAMES = 6
+TELEPORT_NUM_FRAMES = 6 # 이미지 기준 프레임 수
 EFFECT_SHEET = 'Teleport.png'
 EFFECT_FRAME_WIDTH = 100
 EFFECT_FRAME_HEIGHT = 100
-EFFECT_NUM_FRAMES = 16
+EFFECT_NUM_FRAMES = 16 # 이미지 기준 프레임 수
 
 # 마지막 첨부 애니메이션: Attack_From_Cover.png
 ATTACK_FROM_COVER_SHEET = 'Aerial_Strike.png'
