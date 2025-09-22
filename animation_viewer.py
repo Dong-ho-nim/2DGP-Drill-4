@@ -1,10 +1,14 @@
 from pico2d import *
 
-# 첫 번째 애니메이션: Energy_Wave.png
+# 첫 번째 애니메이션: Energy_Wave.png (프레임마다 크기가 다른 sprite sheet)
 FIRST_SHEET = 'Energy_Wave.png'
 FIRST_FRAME_WIDTH = 128
 FIRST_FRAME_HEIGHT = 128
 FIRST_NUM_FRAMES = 7
+FIRST_FRAME_INFO = [
+    {'x': i * FIRST_FRAME_WIDTH, 'y': 0, 'w': FIRST_FRAME_WIDTH, 'h': FIRST_FRAME_HEIGHT} for i in range(FIRST_NUM_FRAMES)
+]
+FIRST_SCALE_LIST = [0.5, 0.7, 1.0, 1.2, 1.5, 1.8, 2.0]  # 프레임별 커지는 효과
 
 # 두 번째 애니메이션: Light_Emission.png
 SECOND_SHEET = 'Light_Emission.png'
@@ -29,7 +33,7 @@ ATTACK_FROM_COVER_FRAME_WIDTH = 128
 ATTACK_FROM_COVER_FRAME_HEIGHT = 128
 ATTACK_FROM_COVER_NUM_FRAMES = 9  # 이미지 기준 프레임 수
 
-open_canvas()
+open_canvas(800, 600)
 
 SCALE = 1.5
 CENTER_X, CENTER_Y = 400, 300
@@ -42,14 +46,18 @@ effect = load_image(EFFECT_SHEET)
 attack_from_cover = load_image(ATTACK_FROM_COVER_SHEET)
 
 while True:
-    # 첫 번째 애니메이션 5회 반복
+    # 첫 번째 애니메이션 5회 반복 (프레임마다 크기가 같은 sprite sheet, SCALE로 커지는 효과)
     for repeat in range(5):
         for frame in range(FIRST_NUM_FRAMES):
+            info = FIRST_FRAME_INFO[frame]
+            scale = FIRST_SCALE_LIST[frame]
             clear_canvas()
+            draw_x = CENTER_X - int((info['w'] * scale) // 2)
+            draw_y = CENTER_Y - int((info['h'] * scale) // 2)
             first.clip_draw(
-                frame * FIRST_FRAME_WIDTH, 0, FIRST_FRAME_WIDTH, FIRST_FRAME_HEIGHT,
-                CENTER_X, CENTER_Y,
-                int(FIRST_FRAME_WIDTH * SCALE), int(FIRST_FRAME_HEIGHT * SCALE)
+                info['x'], info['y'], info['w'], info['h'],
+                draw_x + int((info['w'] * scale) // 2), draw_y + int((info['h'] * scale) // 2),
+                int(info['w'] * scale), int(info['h'] * scale)
             )
             update_canvas()
             delay(0.12)
