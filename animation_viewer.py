@@ -19,8 +19,8 @@ EFFECT_SHEET = 'Teleport.png'  # 첨부 이펙트 애니메이션 시트
 FRAME_WIDTH = 128
 FRAME_HEIGHT = 128
 NUM_FRAMES = 6
-EFFECT_FRAME_WIDTH = 128
-EFFECT_FRAME_HEIGHT = 128
+EFFECT_FRAME_WIDTH = 100
+EFFECT_FRAME_HEIGHT = 100
 EFFECT_NUM_FRAMES = 16
 
 open_canvas()
@@ -120,7 +120,7 @@ while True:
             effect_frame = EFFECT_NUM_FRAMES - 1 - int(frame * (EFFECT_NUM_FRAMES / NUM_FRAMES))
             effect.clip_draw(
                 effect_frame * EFFECT_FRAME_WIDTH, 0, EFFECT_FRAME_WIDTH, EFFECT_FRAME_HEIGHT,
-                CENTER_X, CENTER_Y,
+                CENTER_X, CENTER_Y - 100,
                 int(EFFECT_FRAME_WIDTH * SCALE), int(EFFECT_FRAME_HEIGHT * SCALE)
             )
             update_canvas()
