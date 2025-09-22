@@ -89,14 +89,14 @@ while True:
         clear_canvas()
         teleport_out.clip_draw(
             frame * FRAME_WIDTH, 0, FRAME_WIDTH, FRAME_HEIGHT,
-            CENTER_X, CENTER_Y,
+            CENTER_X, CENTER_Y ,
             int(FRAME_WIDTH * SCALE), int(FRAME_HEIGHT * SCALE)
         )
         # 이펙트 애니메이션 오버레이 (역방향)
         effect_frame = EFFECT_NUM_FRAMES - 1 - int(frame * (EFFECT_NUM_FRAMES / NUM_FRAMES))
         effect.clip_draw(
             effect_frame * EFFECT_FRAME_WIDTH, 0, EFFECT_FRAME_WIDTH, EFFECT_FRAME_HEIGHT,
-            CENTER_X, CENTER_Y,
+            CENTER_X, CENTER_Y - 100,
             int(EFFECT_FRAME_WIDTH * SCALE), int(EFFECT_FRAME_HEIGHT * SCALE)
         )
         update_canvas()
