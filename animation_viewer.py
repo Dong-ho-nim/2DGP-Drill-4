@@ -54,8 +54,28 @@ while True:
             update_canvas()
             delay(0.12)
     delay(1.0)
-    # 텔레포트 등장 애니메이션 5회 반복
-    for repeat in range(5):
+    # 텔레포트 등장-퇴장 애니메이션을 1회 이어서 실행
+    for frame in range(NUM_FRAMES):
+        clear_canvas()
+        teleport_in.clip_draw(
+            frame * FRAME_WIDTH, 0, FRAME_WIDTH, FRAME_HEIGHT,
+            CENTER_X, CENTER_Y,
+            int(FRAME_WIDTH * SCALE), int(FRAME_HEIGHT * SCALE)
+        )
+        update_canvas()
+        delay(0.12)
+    for frame in range(NUM_FRAMES):
+        clear_canvas()
+        teleport_out.clip_draw(
+            frame * FRAME_WIDTH, 0, FRAME_WIDTH, FRAME_HEIGHT,
+            CENTER_X, CENTER_Y,
+            int(FRAME_WIDTH * SCALE), int(FRAME_HEIGHT * SCALE)
+        )
+        update_canvas()
+        delay(0.12)
+    delay(1.0)
+    # 텔레포트 등장-퇴장 애니메이션을 4회 반복
+    for repeat in range(4):
         for frame in range(NUM_FRAMES):
             clear_canvas()
             teleport_in.clip_draw(
@@ -65,9 +85,6 @@ while True:
             )
             update_canvas()
             delay(0.12)
-    delay(1.0)
-    # 텔레포트 퇴장 애니메이션 5회 반복
-    for repeat in range(5):
         for frame in range(NUM_FRAMES):
             clear_canvas()
             teleport_out.clip_draw(
@@ -77,7 +94,7 @@ while True:
             )
             update_canvas()
             delay(0.12)
-    delay(1.0)
+        delay(1.0)
 
 close_canvas()
 
