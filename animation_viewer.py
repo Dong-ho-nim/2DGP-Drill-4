@@ -23,6 +23,12 @@ EFFECT_FRAME_WIDTH = 100
 EFFECT_FRAME_HEIGHT = 100
 EFFECT_NUM_FRAMES = 16
 
+# 마지막 첨부 애니메이션: Attack_From_Cover.png
+ATTACK_FROM_COVER_SHEET = 'Aerial_Strike.png'
+ATTACK_FROM_COVER_FRAME_WIDTH = 128
+ATTACK_FROM_COVER_FRAME_HEIGHT = 128
+ATTACK_FROM_COVER_NUM_FRAMES = 9  # 이미지 기준 프레임 수
+
 open_canvas()
 
 SCALE = 1.5
@@ -33,6 +39,7 @@ second = load_image(SECOND_SHEET)
 teleport_in = load_image(TELEPORT_IN_SHEET)
 teleport_out = load_image(TELEPORT_OUT_SHEET)
 effect = load_image(EFFECT_SHEET)
+attack_from_cover = load_image(ATTACK_FROM_COVER_SHEET)
 
 while True:
     # 첫 번째 애니메이션 5회 반복
@@ -124,5 +131,17 @@ while True:
             update_canvas()
             delay(0.12)
         delay(1.0)
+    # Attack_From_Cover 애니메이션 5회 반복
+    for repeat in range(5):
+        for frame in range(ATTACK_FROM_COVER_NUM_FRAMES):
+            clear_canvas()
+            attack_from_cover.clip_draw(
+                frame * ATTACK_FROM_COVER_FRAME_WIDTH, 0, ATTACK_FROM_COVER_FRAME_WIDTH, ATTACK_FROM_COVER_FRAME_HEIGHT,
+                CENTER_X, CENTER_Y,
+                int(ATTACK_FROM_COVER_FRAME_WIDTH * SCALE), int(ATTACK_FROM_COVER_FRAME_HEIGHT * SCALE)
+            )
+            update_canvas()
+            delay(0.12)
+    delay(1.0)
 
 close_canvas()
